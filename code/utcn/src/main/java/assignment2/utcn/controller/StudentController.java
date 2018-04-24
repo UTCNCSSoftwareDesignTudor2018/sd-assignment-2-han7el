@@ -1,7 +1,9 @@
 package assignment2.utcn.controller;
 
-import assignment2.utcn.business.CourseService;
-import assignment2.utcn.business.StudentService;
+
+import assignment2.utcn.business.services.CourseService;
+import assignment2.utcn.business.services.EnrollmentService;
+import assignment2.utcn.business.services.StudentService;
 import assignment2.utcn.persistance.entity.Course;
 import assignment2.utcn.persistance.entity.Student;
 import assignment2.utcn.persistance.entity.StudentCourse;
@@ -23,6 +25,8 @@ public class StudentController {
     StudentService studentService;
     @Inject
     CourseService courseService;
+    @Inject
+    EnrollmentService enrollmentService;
 
     @RequestMapping(value = "/student",method = RequestMethod.GET)
     public ModelAndView getStudent()
@@ -39,7 +43,7 @@ public class StudentController {
     public ModelAndView updateStudent(@ModelAttribute(value = "updateStudent") Student updateStudent)
     {
         updateStudent.setStudentid(1);
-        studentService.update(updateStudent);
+        studentService.updateStudent(updateStudent);
 
         return new ModelAndView("redirect:student");
 
@@ -48,7 +52,7 @@ public class StudentController {
     @RequestMapping(value= "/student/enrollment",method = RequestMethod.GET)
     public ModelAndView viewEnrolment(ModelMap model)
     {
-        List<StudentCourse> studentCourse = studentService.getEnrolledCoursesOfStudent(1);
+        List<StudentCourse> studentCourse = enrollmentService.getEnrolledCoursesOfStudent(1);
         List<Course> allCourses = courseService.getAllCourses();
         ModelAndView mav = new ModelAndView("enrolment_view");
         model.addAttribute("enrollmentOptions",allCourses);
@@ -61,7 +65,7 @@ public class StudentController {
     @RequestMapping(value="/student/enrollment/enrollmentOptions",method = RequestMethod.POST)
     public ModelAndView enrollToCourse(@ModelAttribute(value="enrollmentOptions") @RequestParam Integer courseid)
     {
-        studentService.enrollStudentToCourse(studentService.getStudentById(1),courseService.getCourseById(courseid));
+        enrollmentService.enrollStudentToCourse(studentService.getStudentById(1),courseService.getCourseById(courseid));
         return new ModelAndView("redirect:/student/enrollment");
     }
 

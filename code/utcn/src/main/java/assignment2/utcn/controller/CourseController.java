@@ -1,7 +1,7 @@
 package assignment2.utcn.controller;
 
-import assignment2.utcn.business.CourseService;
-import assignment2.utcn.business.TeacherService;
+import assignment2.utcn.business.services.CourseService;
+import assignment2.utcn.business.services.TeacherService;
 import assignment2.utcn.persistance.entity.Course;
 import assignment2.utcn.persistance.entity.ReportObj;
 import assignment2.utcn.persistance.entity.Teacher;
