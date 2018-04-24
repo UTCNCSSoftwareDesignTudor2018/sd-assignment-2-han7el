@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Students</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<div class="nav-wrapper">
+    <nav class="nav-menu">
+        <ul class="clearfix">
+            <li><a href="/teacher">Back to profile</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+<div class="container">
+    <div class="page-header" courseid="banner">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-6">
+                <h1>List of students with enrolments</h1>
+
+<table  border="1">
+    <thead>
+    <tr>
+        <th>Student name</th>
+        <th>Student cnp</th>
+        <th>Student address</th>
+        <th>Student group</th>
+        <th>Course</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${ studentsWithCoursesList }">
+
+        <td th:text="${ student.name }">ID</td>
+        <td th:text="${ student.cnp}">name</td>
+        <td th:text="${ student.groupp}">name</td>
+        <td th:text="${ student.address}">name</td>
+        <td th1:text="${student.courses }">
+            <p th:each="studentcourse: ${ student.courses  }">
+                <span th:text="${studentcourse.course.name}">name</span>
+                <span th:text="${studentcourse.grade}">grade</span>
+                <span th:text="${studentcourse.date}">date</span>
+            </p>
+        </td>
+
+
+
+
+
+
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<br/>
+<br/>
+
+                <form   th:object="${newReport}" method="post">
+                    <div class="col-sm-12">
+                        <label>Report name</label>
+                        <input placeholder="Report Name" name="reportName"/>
+                    </div>
+
+                    <button type="submit" class = "btn btn-primary">Create Report</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

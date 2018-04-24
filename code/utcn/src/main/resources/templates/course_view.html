@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Courses</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<div class="nav-wrapper">
+    <nav class="nav-menu">
+        <ul class="clearfix">
+            <li><a href="/teacher">Back to profile</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="page-header" courseid="banner">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-6">
+                <h1>Classes information</h1>
+
+  <table  border="1">
+    <thead>
+      <tr>
+        <th>Course name</th>
+		<th>Teacher name</th>
+		<th>Enrolled students</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="course : ${ courseWithStudentTeachersList }">
+				<td th:text="${ course.name }">name</td>
+				<td th:text="${ course.teacher.name }">fn</td>
+                <td th1:text="${course.students }">
+                     <p th:each="studentcourse: ${ course.students  }">
+                         <span th:text="${ studentcourse.student.name }">name</span>
+                     </p>
+                </td>
+
+
+<!-- 				<td>
+					<a class="btn btn-warning btn-xs" href="admin/movieEdit.html" th1:href="@{/admin/movieEdit(courseid=${movie.courseid})}">Edit</a>
+					<a class="btn btn-danger btn-xs" href="admin/movieDelete.html" th1:href="@{/admin/movieDelete(courseid=${movie.courseid})}">Delete</a>
+				</td>
+ -->				
+	  </tr>
+    </tbody>
+  </table>
+
+<br/>
+<br/>
+<br/>
+
+ <form   th:object="${newReport}" method="post">
+			<div class="col-sm-12">
+				<label>Report name</label>
+				<input placeholder="Report Name" name="reportName"/>
+			</div>
+			
+			<button type="submit" class = "btn btn-primary">Create Report</button>
+</form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

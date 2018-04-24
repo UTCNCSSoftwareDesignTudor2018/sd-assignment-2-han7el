@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Teachers</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<div class="nav-wrapper">
+	<nav class="nav-menu">
+		<ul class="clearfix">
+			<li><a href="/teacher">Back to profile</a></li>
+		</ul>
+	</nav>
+</div>
+
+<div class="container">
+	<div class="page-header" courseid="banner">
+		<div class="row">
+			<div class="col-lg-8 col-md-7 col-sm-6">
+				<h1>List of teachers</h1>
+
+  <table  border="1">
+    <thead>
+      <tr>
+		<th>Name</th>
+		<th>CNP</th>
+		<th>Address</th>
+        <th>Courses</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="teacher : ${ teachersWithCoursesList }">
+
+				<td th:text="${ teacher.name }">name</td>
+				<td th:text="${ teacher.cnp }">cnp</td>
+				<td th:text="${ teacher.address }">address</td>
+				<td th1:text="${ teacher.courses }">
+					<p th:each="course: ${ teacher.courses  }">
+                		<span th:text="${course.name}">name</span>
+            		</p>
+				</td>
+			
+
+
+
+
+
+	  </tr>
+    </tbody>
+  </table>
+
+<br/>
+<br/>
+<br/>
+
+				<form   th:object="${newReport}" method="post">
+					<div class="col-sm-12">
+						<label>Report name</label>
+						<input placeholder="Report Name" name="reportName"/>
+					</div>
+
+					<button type="submit" class = "btn btn-primary">Create Report</button>
+				</form>
+
+
+
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

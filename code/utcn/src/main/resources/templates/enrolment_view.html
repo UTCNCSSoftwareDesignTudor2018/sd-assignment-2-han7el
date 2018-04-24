@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Students</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<div class="nav-wrapper">
+    <nav class="nav-menu">
+        <ul class="clearfix">
+            <li><a href="/student">Back to profile</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="page-header" courseid="banner">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-6">
+                <h1>Currently enrolled classes</h1>
+
+<table  border="1">
+    <thead>
+    <tr>
+        <th>Course name</th>
+        <th>Course teacher</th>
+        <th>Course grade</th>
+        <th>Course date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="studentcourse: ${ enrollmentList }">
+        <td th:text="${ studentcourse.course.name}">ID</td>
+        <td th:text="${ studentcourse.course.teacher.name}">teacher</td>
+        <td th:text="${studentcourse.grade}">grade</td>
+        <td th:text="${ studentcourse.date}">date</td>
+    </tr>
+    </tbody>
+</table>
+                <br/>
+                <br/>
+                <br/>
+
+                <form th:action="@{/student/enrollment/enrollmentOptions}" method="post" enctype="multipart/form-data" >
+                    <select name="courseid">
+                        <option th:each="course : ${enrollmentOptions}"
+                                th:value="${course.courseid}"
+                                th:text="${course.name}">Course</option>
+                    </select>
+                    <input type="submit" value="Enroll"/>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+<br/>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

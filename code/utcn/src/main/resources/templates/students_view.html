@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Students</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<div class="nav-wrapper">
+    <nav class="nav-menu">
+        <ul class="clearfix">
+            <li><a href="/teacher">Back to profile</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+<div class="container">
+    <div class="page-header" courseid="banner">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-6">
+                <h1>List of students</h1>
+
+<table  border="1">
+    <thead>
+    <tr>
+        <th>Name name</th>
+        <th>CNP</th>
+        <th>Address</th>
+        <th>Group</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${ studentsWithCoursesList }">
+
+        <td th:text="${ student.name }">name</td>
+        <td th:text="${ student.cnp }">cnp</td>
+        <td th:text="${ student.address }">address</td>
+        <td th:text="${ student.groupp }">groupp</td>
+
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<br/>
+<br/>
+
+<form   th:object="${newStudent}" method="post">
+    <div class="col-sm-12">
+        <label>Name</label>
+        <input placeholder="Student Name" name="name"/>
+    </div>
+    <div class="col-sm-12">
+        <label>CNP</label>
+        <input placeholder="Student CNP" name="cnp"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Address</label>
+        <input placeholder="Student address" name="address"/>
+    </div>
+    <div class="col-sm-12">
+        <label>Group</label>
+        <input placeholder="Student group" name="groupp"/>
+    </div>
+
+    <button type="submit" class = "btn btn-primary">ADD Student</button>
+</form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
