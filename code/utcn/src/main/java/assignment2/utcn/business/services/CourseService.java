@@ -30,7 +30,7 @@ public class CourseService {
 
     public void createCourseReport(ReportObj report, Teacher teacher){
 
-        ReportFactory reportFactory = new ReportFactory();
+        ReportFactory reportFactory = ReportFactory.getInstance();
 
         Report courseReportDAO = reportFactory.getReport(ReportFactory.COURSE_REPORT);
         try {

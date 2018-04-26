@@ -34,7 +34,7 @@ public class EnrollmentService {
 
     public void createEnrolmentReport(ReportObj report, Teacher teacher){
 
-        ReportFactory reportFactory = new ReportFactory();
+        ReportFactory reportFactory = ReportFactory.getInstance();
 
         Report enrolmentsReportDAO = reportFactory.getReport(ReportFactory.ENROLMENT_REPORT);
         try {

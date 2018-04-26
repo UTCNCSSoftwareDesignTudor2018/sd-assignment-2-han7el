@@ -24,11 +24,12 @@ public class StudentService {
     private List<Validator<Student>> validators;
 
     public Student addNewStudent(Student newStudent){
-        //validateStudent(newStudent);
+        validateStudent(newStudent);
         return studentRepository.save(newStudent);
     }
 
     public Student updateStudent(Student updateStudent){
+        validateStudent(updateStudent);
         return studentRepository.save(updateStudent);
     }
 
@@ -39,7 +40,7 @@ public class StudentService {
     public List<Student> getAllStudents(){return studentRepository.findAll();}
 
     public void createStudentReport(ReportObj report, Teacher teacher){
-        ReportFactory reportFactory = new ReportFactory();
+        ReportFactory reportFactory = ReportFactory.getInstance();
 
         Report studentsReportDAO = reportFactory.getReport(ReportFactory.STUDENT_REPORT);
         try {
@@ -51,8 +52,8 @@ public class StudentService {
 
     //--------------------------------------------
 
-    /*public void validateStudent(Student student){
-        ValidatorFactory validatorFactory = new ValidatorFactory();
+    public void validateStudent(Student student){
+        ValidatorFactory validatorFactory = ValidatorFactory.getInstance();
 
         validators = new ArrayList<Validator<Student>>();
 
@@ -64,5 +65,5 @@ public class StudentService {
         for(Validator<Student> sv: validators){
             sv.validate(student);
         }
-    }*/
+    }
 }

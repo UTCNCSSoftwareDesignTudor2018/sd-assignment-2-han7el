@@ -11,13 +11,13 @@ public class Teacher{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(columnDefinition = "CHAR(50)")
+    @Column(columnDefinition = "VARCHAR(50)")
     private String name;
 
-    @Column(columnDefinition = "CHAR(13)")
+    @Column(columnDefinition = "VARCHAR(13)")
     private String cnp;
 
-    @Column(columnDefinition = "CHAR(50)")
+    @Column(columnDefinition = "VARCHAR(50)")
     private String address;
 
     @OneToMany(mappedBy = "teacher")

@@ -12,6 +12,17 @@ public class ValidatorFactory {
     public static final String GROUP_VALIDATOR = "GRPNRV";
     public static final String NAME_VALIDATOR = "NAMEV";
 
+    //singleton pattern
+    private static ValidatorFactory instance = new ValidatorFactory();
+
+    private ValidatorFactory(){
+
+    }
+
+    public static ValidatorFactory getInstance(){
+        return instance;
+    }
+
     public Validator getValidator(String validatorType){
         if(validatorType == null){
             return null;

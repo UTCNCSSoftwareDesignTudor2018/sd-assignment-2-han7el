@@ -9,16 +9,16 @@ import java.util.List;
 public class Student{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Integer studentid;
 
-    @Column(columnDefinition = "CHAR(50)")
+    @Column(columnDefinition = "VARCHAR(50)")
     private String name;
 
     @Column(columnDefinition = "CHAR(13)")
     private String cnp;
 
-    @Column(columnDefinition = "CHAR(50)")
+    @Column(columnDefinition = "VARCHAR(50)")
     private String address;
 
     @Column(columnDefinition = "CHAR(5)")

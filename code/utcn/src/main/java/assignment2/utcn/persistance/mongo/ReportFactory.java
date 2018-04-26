@@ -9,6 +9,17 @@ public class ReportFactory {
     public static final String COURSE_REPORT = "CourseReport";
     public static final String TEACHER_REPORT = "TeacherReport";
 
+    //singleton pattern
+    private static ReportFactory instance = new ReportFactory();
+
+    private ReportFactory(){
+
+    }
+
+    public static ReportFactory getInstance(){
+        return instance;
+    }
+
     public Report getReport(String reportType){
         if(reportType == null){
             return null;
